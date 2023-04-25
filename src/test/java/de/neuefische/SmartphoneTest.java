@@ -8,7 +8,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SmartphoneTest {
 
+    @Test
+    void getContact_with_index() {
+        //Given
+        String model = "Iphone";
+        String manufacturer = "Apple";
 
+        Contact tom = new Friend();
+        Contact max = new Friend();
+        Contact ana = new Friend();
+
+        Contact may = new Friend();
+
+        Contact[] contactList = {tom,max,ana};
+
+        Smartphone testPhone = new Smartphone(model, manufacturer, contactList);
+
+        int indexAna = 2;
+
+        //When
+        Contact actual = testPhone.getContact(indexAna);
+
+        //Then
+        assertEquals(ana,actual);
+    }
     @Test
     void addContact(){
         //Given
