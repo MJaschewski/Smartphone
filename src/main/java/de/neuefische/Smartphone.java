@@ -11,6 +11,43 @@ public class Smartphone implements GPS, Radio{
         private String position = "Cologne";
 
     //Methods
+        public void removeContactByName(String name){
+            int index = -1;
+            for (int i = 0; i < contactList.length; i++) {
+                if(contactList[i].getContactName() == name){
+                    index = i;
+                    break;
+                }
+            }
+            if (index == -1){
+                System.out.println("No contact with name " + name + " in contact list");
+            }
+            else {
+                Contact[] newContactList = new Contact[ this.contactList.length - 1];
+
+                System.arraycopy(this.contactList, 0, newContactList,0,index);
+                System.arraycopy(this.contactList,index + 1,newContactList,index,this.contactList.length - index - 1);
+
+                this.contactList = newContactList;
+            }
+        }
+
+
+    public Contact getContactByName(String name){
+            int index = -1;
+            for (int i = 0; i < contactList.length; i++) {
+                if(contactList[i].getContactName() == name){
+                    index = i;
+                    break;
+                }
+            }
+            if(index == -1){
+                System.out.println("No contact with name " + name);
+                return  new Friend();
+            }
+            return getContact(index);
+        }
+
         @Override
         public String toString() {
             return "Smartphone{" +
