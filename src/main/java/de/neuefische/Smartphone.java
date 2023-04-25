@@ -20,6 +20,17 @@ public class Smartphone implements GPS, Radio{
                     '}';
         }
 
+
+        public void addContact(Contact contact){
+            Contact[] newContact = {contact};
+            Contact[] newContactList = new Contact[ this.contactList.length + 1];
+
+            System.arraycopy(this.contactList, 0, newContactList,0,this.contactList.length);
+            System.arraycopy(newContact,0,newContactList,this.contactList.length,1);
+
+            this.contactList = newContactList;
+        }
+
         public String getModel() {
             return model;
         }
